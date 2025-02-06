@@ -2,13 +2,6 @@
 //date 31/01/2025
 //author: Aoibhe Hegarty
 
-//ATTENTION!!!!!!!
-//the following method times out of DCU's einstein 
-//because it takes too long
-//the correct method is apparently 
-//the seive of eratosthenes
-//but idk how to get that one working
-//we shall revisit at a later date
 
 import java.util.Scanner;
 
