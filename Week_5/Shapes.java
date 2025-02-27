@@ -19,7 +19,7 @@ public class Shapes {
         }
     }
 
-    public class Circle extends Shape {
+    class Circle extends Shape {
         //attributes
         private double radius;
 
@@ -67,14 +67,14 @@ public class Shapes {
     }
 
     public static void main (String[] args) {
-        Circle circle_1 = new Circle("green", 1);/*
-        Rectangle rect_1 = new Rectangle("red", 2.0, 4.0);
+        Shapes.Circle circle_1 = new Shapes.Circle("green", 1);
+       // Rectangle rect_1 = new Rectangle("red", 2.0, 4.0);
 
         circle_1.displayColor();
         circle_1.getArea();
 
-        rect_1.displayColor();
-        rect_1.getArea();*/
+    //    rect_1.displayColor();
+      //  rect_1.getArea();*/
     }
 }
 
