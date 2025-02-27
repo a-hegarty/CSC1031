@@ -3,73 +3,78 @@ package Week_5;
 public class Shapes {
     abstract class Shape{
         //attributes
-        private String colour;
+        protected String color;
 
         //constructor
-        Shape(String colour) {
-            this.colour = colour;
+        Shape(String color) {
+            this.color = color;
         }
 
         //abstract method
-        abstract void getArea();
+        abstract double getArea();
 
         //concrete method
-        public void displayColor() {
-            System.out.println("Shape Colour: " + colour);
+        void displayColor() {
+            System.out.println("Shape Colour: " + color);
         }
-
-
     }
 
-    static class Circle extends Shape {
+    public class Circle extends Shape {
         //attributes
-        double radius;
+        private double radius;
 
         //constructor
-        Circle(String colour, double radius) {
-            super(colour);
-            this.radius = radius;
+        public Circle(String color, double radius) {
+            super(color);
+            if (radius >= 0) {
+                this.radius = radius;
+            } else {
+                this.radius = 0;
+            }
         }
+       /*  public Circle(String color, double radius) {
+            super(color);
+            this.radius = radius;
+        }*/
 
         //override method getArea()
         @Override
-        void getArea() {
-            double area = (2 * 3.14 * radius);
-            System.out.println(area);
+        double getArea() {
+            double area = (3.14 * radius * radius);
+            return area;
         }
-
     }
 
-    static class Rectangle extends Shape {
+    public class Rectangle extends Shape {
         //attributes
-        double width;
-        double height;
+        private double width;
+        private double height;
 
         //constructor
-        Rectangle(String colour, double width, double height) {
-            super(colour);
+        public Rectangle(String color, double width, double height) {
+            super(color);
             this.width = width;
             this.height = height;
         }
 
         //override method getArea()
         @Override
-        void getArea() {
+        double getArea() {
             double area = width * height;
-            System.out.println(area);
+            return area;
         }
 
     }
 
     public static void main (String[] args) {
-        Shapes.Circle circle_1 = new Shapes.Circle("green", 1);
-        Shapes.Rectangle rect_1 = new Shapes.Rectangle("red", 2.0, 4.0);
+        Circle circle_1 = new Circle("green", 1);/*
+        Rectangle rect_1 = new Rectangle("red", 2.0, 4.0);
 
         circle_1.displayColor();
         circle_1.getArea();
 
         rect_1.displayColor();
-        rect_1.getArea();
+        rect_1.getArea();*/
     }
 }
 
