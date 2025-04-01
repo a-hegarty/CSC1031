@@ -1,4 +1,4 @@
-package Week_5;
+//package Week_5;
 
 public class Shapes {
     abstract class Shape{
@@ -21,7 +21,7 @@ public class Shapes {
 
     class Circle extends Shape {
         //attributes
-        private double radius;
+        protected double radius;
 
         //constructor
         public Circle(String color, double radius) {
@@ -47,8 +47,8 @@ public class Shapes {
 
     public class Rectangle extends Shape {
         //attributes
-        private double width;
-        private double height;
+        protected double width;
+        protected double height;
 
         //constructor
         public Rectangle(String color, double width, double height) {
@@ -67,11 +67,11 @@ public class Shapes {
     }
 
     public static void main (String[] args) {
-        Shapes.Circle circle_1 = new Shapes.Circle("green", 1);
-       // Rectangle rect_1 = new Rectangle("red", 2.0, 4.0);
+        //Shapes.Circle circle_1 = new Shapes.Circle("green", 1);
+        //Rectangle rect_1 = new Rectangle("red", 2.0, 4.0);
 
-        circle_1.displayColor();
-        circle_1.getArea();
+        //circle_1.displayColor();
+        //circle_1.getArea();
 
     //    rect_1.displayColor();
       //  rect_1.getArea();*/

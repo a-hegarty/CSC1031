@@ -1,7 +1,9 @@
+package Week_6;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameLobby{
+public class GameLobby2{
     private List<Player> players = new ArrayList<>();
     void registerPlayer(Player player)
     {
@@ -77,9 +79,9 @@ interface Player{
 
 abstract class AbstractPlayer implements Player {
     protected String name;
-    protected GameLobby lobby;
+    protected GameLobby2 lobby;
 
-    public AbstractPlayer(String name, GameLobby lobby) {
+    public AbstractPlayer(String name, GameLobby2 lobby) {
         this.name = name;
         this.lobby = lobby;
     }
@@ -101,7 +103,7 @@ abstract class AbstractPlayer implements Player {
 }
 
 class HumanPlayer extends AbstractPlayer {
-    public HumanPlayer(String name, GameLobby lobby) {
+    public HumanPlayer(String name, GameLobby2 lobby) {
             super(name, lobby);
     }
     
@@ -129,7 +131,7 @@ class HumanPlayer extends AbstractPlayer {
 }
 
 class AIPlayer extends AbstractPlayer {
-    public AIPlayer(String name, GameLobby lobby) {
+    public AIPlayer(String name, GameLobby2 lobby) {
         super(name, lobby);
     }
 
@@ -157,7 +159,7 @@ class AIPlayer extends AbstractPlayer {
 }
 
 class Spectator extends AbstractPlayer {
-    public Spectator(String name, GameLobby lobby) {
+    public Spectator(String name, GameLobby2 lobby) {
         super(name, lobby);
     }
 
@@ -181,5 +183,56 @@ class Spectator extends AbstractPlayer {
     @Override
     public String getPlayerName() {
         return this.name;
+    }
+}
+
+class AdminPlayer extends AbstractPlayer {
+    public AdminPlayer(String name, GameLobby2 lobby) {
+        super(name, lobby);
+    }
+
+    @Override
+    public void joinGame() {
+        this.lobby.registerPlayer(this);
+        //System.out.println("[GameLobby] " + this.getPlayerType() + " " + this.name + " has joined the lobby.");
+    }
+
+    @Override
+    public void leaveGame() {
+        this.lobby.removePlayer(this);
+        //System.out.println("[GameLobby] " + this.getPlayerType() + " " + this.name + " has left the lobby.");
+    }
+
+    @Override
+    public String getPlayerType() {
+        return "AdminPlayer";
+    }
+
+    @Override
+    public String getPlayerName() {
+        return this.name;
+    }
+
+   /*public void kickPlayer(String name) {
+        lobby.kickPlayer(name, this);
+    }*/
+}
+
+public class Main{
+    public static void main(String[] args) {
+        GameLobby2 lobby = new GameLobby2();
+        Player alice = new HumanPlayer("Alice", lobby);
+        Player bot = new AIPlayer("BotX", lobby);
+        Player bob = new Spectator("Bob", lobby);
+        Player admin = new AdminPlayer("Charlie", lobby);
+
+        alice.joinGame();
+        bot.joinGame();
+        bob.joinGame();
+        admin.joinGame();
+
+        admin.sendMessage("Welcome to the lobby!");
+        //((AdminPlayer) admin).kickPlayer("Bob"); // Admin kicks Spectator Bob
+        lobby.startMatch();
     }
 }
